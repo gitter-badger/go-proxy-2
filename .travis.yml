@@ -4,8 +4,11 @@ os:
 
 language: go
 
-install:
+before_install:
  - go get -t ./...
  - go get -u https://github.com/zhuozl/go-proxy
 
 script: go test -cover -bench=. -run=. ./...
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
