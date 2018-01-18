@@ -4,4 +4,8 @@ os:
 
 language: go
 
+install:
+ - go get -t ./...
+ - go get -u https://github.com/zhuozl/go-proxy
+
 script: go test -cover -bench=. -run=. ./...
