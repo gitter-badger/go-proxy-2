@@ -105,20 +105,19 @@ func (local *LsLocal) handleConn(userConn *net.TCPConn) {
 		//proxyServer.Write([]byte{0x05,0x01,0x02})
 		proxyServer.Write([]byte{0x05,0x00})
 		proxyServer.Read(b[:])
-		fmt.Println("X-1")
-		fmt.Println(ByteToHex(b[:]))
+		//fmt.Println("X-1")
+		//fmt.Println(ByteToHex(b[:]))
 
-		//如果是加密方式
+		//如果是加密方式,认证账号密码
 		//proxyServer.Write([]byte{0x01,0x06,0x7a,0x68,0x75,0x6f,0x7a,0x6c,0x07,0x30,0x31,0x31,0x32,0x32,0x33,0x33});
-
 		//proxyServer.Read(b[:])
 		//fmt.Println("X-2")
 		//fmt.Println(ByteToHex(b[:]))
-		proxyServer.Write([]byte{0x05,0x01,0x00,0x01,ip[12],ip[13],ip[14],ip[15],buff.Bytes()[0],buff.Bytes()[1]})
 
+		proxyServer.Write([]byte{0x05,0x01,0x00,0x01,ip[12],ip[13],ip[14],ip[15],buff.Bytes()[0],buff.Bytes()[1]})
 		proxyServer.Read(b[:])
-		fmt.Println("X-3")
-		fmt.Println(ByteToHex(b[:]))
+		//fmt.Println("X-3")
+		//fmt.Println(ByteToHex(b[:]))
 	}
 
 	// 进行转发
